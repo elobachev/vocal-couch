@@ -37,7 +37,7 @@ const MicrophoneAnalyzer: React.FC<MicrophoneAnalyzerProps> = ({
   onMicrophoneStateChange
 }) => {
   const pitchDetectorRef = useRef<PitchDetector | null>(null);
-  const analysisIntervalRef = useRef<number | null>(null);
+  const analysisIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isInitializingRef = useRef(false);
   
   const lastUIUpdateTsRef = useRef(0);
