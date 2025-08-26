@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom dark theme variables */
+:root {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-surface: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-yellow: #f59e0b;
+  --accent-purple: #8b5cf6;
+}
+
+@layer base {
+  html, body, #root {
+    @apply h-full overflow-hidden;
+  }
+  
+  body {
+    @apply bg-gray-900 text-white font-sans;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Timeline canvas styles */
+  canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Button focus styles */
+  button:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+  }
+  
+  /* Select dropdown styling */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Voice indicator glow effect */
+  .voice-indicator {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  
+  .voice-indicator.correct {
+    color: var(--accent-green);
+  }
+  
+  .voice-indicator.incorrect {
+    color: var(--accent-red);
+  }
+  
+  /* Results modal animations */
+  .results-modal {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .results-score-circle {
+    transform-origin: center;
+    animation: fadeIn 0.5s ease-out 0.2s both;
+  }
+  
+  /* Fixed header class */
+  .vocal-coach-header {
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
+  }
+  
+  .vocal-coach-timeline {
+    background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  }
+  
+  .vocal-coach-lyrics {
+    background: linear-gradient(0deg, #1f2937 0%, #374151 100%);
+  }
+}
+
+@layer utilities {
+  /* Input range styling */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-webkit-slider-track {
+    background: var(--bg-surface);
+    height: 4px;
+    border-radius: 2px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--accent-blue);
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  
+  input[type="range"]::-moz-range-track {
+    background: var(--bg-surface);
+    height: 4px;
+    border-radius: 2px;
+    border: none;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    background: var(--accent-blue);
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+  }
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Animation utilities */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vocal-coach-header {
+    padding: 0 1rem;
+  }
+  
+  .vocal-coach-controls {
+    padding: 0.75rem 1rem;
+  }
+  
+  .voice-analyzer {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline-zoom-control {
+    display: none;
+  }
+}
