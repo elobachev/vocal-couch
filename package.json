@@ -1,7 +1,8 @@
 {
-  "name": "vocal-training-app",
+  "name": "vocal-couch",
+  "description": "Vocal Coach is a modern real-time voice training web application that helps users improve their pitch accuracy and develop musical ear. The application analyzes user's voice through microphone and compares it with reference notes from songs, providing instant feedback.",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

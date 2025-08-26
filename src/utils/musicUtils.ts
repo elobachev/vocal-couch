@@ -175,13 +175,15 @@ export class AudioSynthesizer {
       
       // Envelope for smooth attack and release - cross-browser compatible
       const currentTime = this.audioContext!.currentTime;
-      noteGain.gain.setValueAtTime(0, currentTime);
-      
-      // Use exponential ramps for better Safari compatibility
+      // Start from a tiny positive value so exponential ramps are valid across browsers
+      noteGain.gain.setValueAtTime(0.0001, currentTime);
+
+      // Envelope: attack -> sustain -> release
       try {
+        // Exponential ramps require both start and end values to be > 0
         noteGain.gain.exponentialRampToValueAtTime(0.4, currentTime + 0.05); // Attack
         noteGain.gain.exponentialRampToValueAtTime(0.4, currentTime + Math.max(duration - 0.1, 0.05)); // Sustain
-        noteGain.gain.exponentialRampToValueAtTime(0.01, currentTime + duration); // Release
+        noteGain.gain.exponentialRampToValueAtTime(0.01, currentTime + duration); // Release to a small positive value
       } catch (rampError) {
         // Fallback to linear ramps for older browsers
         noteGain.gain.linearRampToValueAtTime(0.4, currentTime + 0.05);
@@ -199,7 +201,7 @@ export class AudioSynthesizer {
         };
       }
       
-      console.log(`Playing note: ${frequency}Hz for ${duration}s (AudioContext state: ${this.audioContext!.state})`);
+      //console.log(`Playing note: ${frequency}Hz for ${duration}s (AudioContext state: ${this.audioContext!.state})`);
     } catch (error) {
       console.error('Error playing note:', error);
     }
