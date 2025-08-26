@@ -622,7 +622,9 @@ function App() {
           </div>
           
           {/* RIGHT: Empty space for balance */}
-          <div className="w-20"></div>
+          <div className="w-20 text-xs text-gray-500 hover:text-gray-400" >
+            <a href="https://github.com/elobachev/vocal-couch" target='_blank'>GitHub</a>
+          </div>
         </div>
       </div>
       

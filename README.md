@@ -1,5 +1,6 @@
 # 🎤 Vocal Coach - Interactive Voice Training App
 
+**Live Demo:** https://vocalcouch.org
 
 ## 📖 Description
 
@@ -88,6 +89,11 @@ You can create your own songs and import them into Vocal Coach.
 
 3. Open Songs list and upload your `.tsv` file.
 
+### Contributing
+
+If you encounter issues, have questions, or want to suggest improvements, please open an **Issue** in this repository.
+
+Pull requests are also welcome! Feel free to fork the project, make your changes, and submit a PR.
 
 ---
 
